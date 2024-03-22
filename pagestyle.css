@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@0;1&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+a:hover{
+    color: #6667b0;
+}
+
+body{
+    background-color: #f8f8f8;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    height: 80px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+nav .left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav .left .logo img{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+nav .left .links{
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+nav .buttons{
+    display: flex;
+    gap: 14px;
+}
+
+nav .buttons a{
+    background-color: #eaf4f4;
+    padding: 10px;
+    color: #6667b0;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+    justify-content: center;
+    text-align: center;
+    gap: 26px;
+    background-color: #fff;
+    opacity: 0.8;
+    background-image: radial-gradient(#6667b0 0.75px, transparent 0.75px), radial-gradient(#6667b0 0.75px, #ffffff 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0,15px 15px;
+}
+
+form .info h1{
+    font-weight: 900;
+    background: #fff;
+}
+
+form .info p{
+    color: #666;
+    font-size: 18px;
+    margin-top: 14px;
+    font-weight: bold;
+    background: #fff;
+}
+
+form .buttons{
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+form .buttons button{
+    border: none;
+    padding: 8px;
+    width: 140px;
+    border-radius: 10px;
+    background-color: #777;
+    color: #fff;
+    cursor: pointer;
+}
+
+form .buttons button.see-all{
+    background-color: #6667b0;
+
+} 
+
+form .search{
+    position: relative;
+    width: 30%;
+    margin-top: 10px;
+}
+
+form .search input{
+    width: 100%;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0px 4px 70px -10px rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+form .search button{
+    position: absolute;
+    right: 0;
+    padding: 12px;
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.content{
+    background-color: #f8f8fa;
+    padding: 100px 80px 0px;
+}
+
+.content .separator{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: ; */
+}
+
+.content .ocorrencias .item .top img{
+    width: 20px;
+}
+
+.ocorrItem{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+.ocorrItem:last-child{
+    border-bottom: none;
+}
+
+.ocorrImage{
+    flex: 1;
+    max-width: 300px;
+}
+
+.ocorrImage img{
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.ocorrDescricao{
+    flex: 2;
+    margin-left: 20px;
+}
+
+.ocorrDescricao .informacao{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.ocorrDescricao .informacao h2{
+    font-size: 15px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.ocorrDescricao h5{
+    font-size: 24px;
+    color: #444;
+    margin-top: 0;
+    max-height: 44px;
+    overflow: hidden;
+}
+
+.ocorrDescricao p{
+    color: #777;
+    margin: 10px 0 20px;
+    font-size: 18px;
+    max-height: 33px;
+    overflow: hidden;
+}
+
+

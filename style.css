@@ -48,10 +48,13 @@ body{
 .container .social-login{
     display: flex;
     margin-top: 20px;
+    margin-left: 20px;
 }
 
 .container .social-login button{
     padding: 8px;
+    padding-left: 50px;
+    padding-right: 50px;
     width: 100%;
     border-radius: 8px;
     display: flex;
@@ -64,6 +67,7 @@ body{
     border: 1px solid #6667b0;
     background: transparent;
     cursor: pointer;
+    margin-left: 40px;
     transition: all 0.3 ease;
 }
 

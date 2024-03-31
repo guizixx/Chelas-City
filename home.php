@@ -40,39 +40,79 @@
             <button class="see-all">Ver Ocorrências</button>
         </div> -->
         <div class="search">
-            <input type="text" name="localizacao" placeholder="Pesquisa a localidade">
+            <input type="text" name="searchInput" placeholder="Pesquisa por ocorrências">
             <button type="submit" name="searchBtn"><i class='bx bx-search'></i></button>
-        </div>
     </form>
+
     <?php
-        $h1 = "";
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $localizacao = filter_input(INPUT_POST, "localizacao", FILTER_SANITIZE_SPECIAL_CHARS);
+            // function stripAccents($str) {
+            //     return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+            // }
 
-            $sql = "SELECT * FROM ocorrencia WHERE localizacao = '$localizacao'";
-            $result = mysqli_query($conn, $sql);
+            function stripAccents($stripAccents){
+                return strtr($stripAccents,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+              }
 
-            if(mysqli_num_rows($result) > 0){
-                $row = mysqli_fetch_assoc($result);
-                $h1 = "<div class='ocorrItem'>
+
+            
+    ?>
+
+    <?php
+    $phpToHtml2 = "";
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $input = filter_input(INPUT_POST, "searchInput", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $sql1 = "SELECT * FROM ocorrencia";
+        $resultInput = mysqli_query($conn, $sql1);
+        
+        if(mysqli_num_rows($resultInput) > 0){
+            while($rowInput = mysqli_fetch_assoc($resultInput)){
+                // echo stripAccents($rowInput['localizacao']);
+                // echo stripAccents($input);
+                if (stripAccents($rowInput['categoria']) == stripAccents($input)){
+                    $phpToHtml2 = "<div class='ocorrItem'>
                             <div class='ocorrImage'>
                                 <img src='logo1.jpg'>
                             </div>
                             <div class='ocorrDescricao'>
                                 <div class='informacao'>
-                                    <h2>{$row['categoria']}</h2>
+                                    <h2>{$rowInput['categoria']}</h2>
                                     <span>|</span>
-                                    <h2>{$row['sub_categoria']}</h2>
+                                    <h2>{$rowInput['sub_categoria']}</h2>
                                 </div>
-                                <h5>{$row['localizacao']}</h5>
-                                <p>{$row['descricao']}</p>
+                                <h5>{$rowInput['localizacao']}</h5>
+                                <p>{$rowInput['descricao']}</p>
                             </div>                            
-                       </div>";
+                        </div>";
+                    echo $phpToHtml2;
+                }
+                elseif (stripAccents($rowInput['localizacao']) == stripAccents($input)){
+                    $phpToHtml2 = "<div class='ocorrItem'>
+                            <div class='ocorrImage'>
+                                <img src='logo1.jpg'>
+                            </div>
+                            <div class='ocorrDescricao'>
+                                <div class='informacao'>
+                                    <h2>{$rowInput['categoria']}</h2>
+                                    <span>|</span>
+                                    <h2>{$rowInput['sub_categoria']}</h2>
+                                </div>
+                                <h5>{$rowInput['localizacao']}</h5>
+                                <p>{$rowInput['descricao']}</p>
+                            </div>                            
+                        </div>";
+                    echo $phpToHtml2;
+                }
+        
+                
             }
-    }
+       
+        }
 
-    mysqli_close($conn);
-    ?>
-    <?php echo $h1 ?>
+
+    }
+    ?> 
+    
+
 </body>
 </html>

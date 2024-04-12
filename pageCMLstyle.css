@@ -1,0 +1,48 @@
+
+#linksCabecalho, #registro{
+    font-weight: 600;
+    font-size: 20px;
+    color: #000;
+}
+
+#ativo {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#linksCabecalho:hover, #ativo{
+    padding-bottom: 1px;
+    border-bottom: 2px solid #08702b;
+    color: #08702b;
+}
+
+#navButoes{
+    font-size: 30px;
+    color: #08702b;
+}
+
+#pesquisaPorOcorrencias{
+    width: 50px;
+}
+
+#dentroDropdown{
+    font-weight: 500;
+}
+
+body{
+    background-color: #08702b;
+}
+
+#textStats{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#headerSearch{
+    background-color: #08702b;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+}
+
+

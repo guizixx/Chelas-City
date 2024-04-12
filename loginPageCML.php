@@ -1,5 +1,5 @@
 <?php
-    include("database.php");
+    // include("database.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loginStyle.css">
-    <title>Lisboa+Perto</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body style="background-color: #d3d3d3;">
     <nav class="navbar navbar-expand-xxl border-bottom" style="background-color: #fff;">
         <div class="container-fluid">
             <a href="#" class="navbar-brand mx-5">
-                <img src="logo1.jpg" style="height: 50px;">
-                Lisboa+Perto
+                <img src="cmlLogo.png" style="height: 50px;">
+                CML Admin Login
             </a>
         </div>
     </nav>
@@ -31,12 +31,11 @@
 
     <!--------------------------- Left Box ----------------------------->
 
-       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
+       <div class="col-md-6 rounded-4 d-flex bg-success justify-content-center align-items-center flex-column left-box">
            <!-- <div class="featured-image mb-3">
             <img src="logo1.jpg" class="img-fluid" style="width: 250px;">
            </div> -->
            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be Verified</p>
-           <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Junte-se a outros cidadãos para o fim de tentar fazer Lisboa um melhor lugar.</small>
        </div> 
 
     <!-------------------- ------ Right Box ---------------------------->
@@ -63,13 +62,10 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
-                </div>
-                <div class="input-group mb-3">
-                    <a href="userHome.php" class="btn btn-lg btn-light w-100 fs-6" id="registro">Entrar sem Login</a>
+                    <button class="btn btn-lg btn-success w-100 fs-6">Login</button>
                 </div>
                 <div class="row">
-                    <small>Ainda não tem conta? <a href="register.php">Sign Up</a></small>
+                    <small>Ainda não tem conta? <a href="#">Sign Up</a></small>
                 </div>
           </div>
        </div> 

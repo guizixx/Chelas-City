@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +68,8 @@
                     echo "<a href='javascript:self.history.back()'><button class='btn btn-primary'>Go Back</button>";
                 }
                 else {
-                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                    // echo $palavra_passe;
+                    $hash = password_hash($palavra_passe, PASSWORD_DEFAULT);
 
                     mysqli_query($conn, "INSERT INTO utilizador(email,palavra_passe,nif,primeiro_nome_ut,apelido_ut,telemovel) VALUES('$email','$hash','$nif','$primeiro_nome_ut','$apelido_ut','$telemovel')") or die("Error Occured");
 
@@ -80,20 +78,9 @@
                     $result = mysqli_query($conn, "SELECT * FROM utilizador WHERE email='$email'") or die("Select Error");
                     $row = mysqli_fetch_assoc($result);
 
-                    if (is_array($row) && !empty($row)) {
-                        $_SESSION['valid'] = $row['email'];
-                        $_SESSION['firstname'] = $row['primeiro_nome_ut'];
-                        $_SESSION['lastname'] = $row['apelido_ut'];
-                        $_SESSION['nif'] = $row['nif'];
-                        $_SESSION['phonenumber'] = $row['telemovel'];
-                        $_SESSION['id'] = $row['id'];
-                    }
-
-                    if (isset($_SESSION['valid'])) {
-                        header("Location: userRegistradoHome.php");
-                    }
+                    // header("Location: loginPage.php");
                 }
-                }
+            }
 
          }else{
          
@@ -116,23 +103,23 @@
                     </div>
                     <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="primeiro_nome_ut" placeholder="Primeiro Nome" autocomplete="off" required>
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="primeiro_nome_ut" placeholder="Primeiro Nome" required>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="apelido_ut" placeholder="Apelido" autocomplete="off" required>
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" name="apelido_ut" placeholder="Apelido" required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="email" class="form-control form-control-lg bg-light fs-6" name="email" placeholder="Email address" autocomplete="off" required>
+                            <input type="email" class="form-control form-control-lg bg-light fs-6" name="email" placeholder="Email address" required>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control form-control-lg bg-light fs-6" name="telemovel" placeholder="Nº telemóvel" autocomplete="off" required min="0" max="999999999" pattern="[0-9]{1,9}">
+                            <input type="number" class="form-control form-control-lg bg-light fs-6" name="telemovel" placeholder="Nº telemóvel" required min="0" max="999999999" pattern="[0-9]{1,9}">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control form-control-lg bg-light fs-6" name="nif" placeholder="NIF" autocomplete="off" required min="0" max="999999999" pattern="[0-9]{1,9}">
+                            <input type="number" class="form-control form-control-lg bg-light fs-6" name="nif" placeholder="NIF" required min="0" max="999999999" pattern="[0-9]{1,9}">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6" name="palavra_passe" placeholder="Password" autocomplete="off" required>
+                            <input type="password" class="form-control form-control-lg bg-light fs-6" name="palavra_passe" placeholder="Password" required>
                         </div>
                         <div class="input-group mb-3">
                             <button type="submit" name="submit" value="Register" class="btn btn-lg btn-primary w-100 fs-6" required>Registar</button>

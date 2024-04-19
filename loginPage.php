@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("database.php");
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,53 @@
     <!----------------------- Main Container -------------------------->
 
      <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <?php
+            if(isset($_POST["submit"])){
+                // $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+                // $palavra_passe = filter_input(INPUT_POST, "palavra_passe", FILTER_SANITIZE_SPECIAL_CHARS);
 
+                $email = mysqli_real_escape_string($conn, $_POST["email"]);
+                // echo $email . "<br>";
+                $password = mysqli_real_escape_string($conn, $_POST["palavra_passe"]);
+                // echo $password;
+                // if(password_verify($password, $row['palavra_passe'])){
+                //     echo "Verificou o hash";
+                // }
+
+                if(!ctype_alnum($password)){
+                    echo "<div class='row'>
+                                <p>Palavra-passe não pode conter símbolos especiais.</p>
+                            </div> <br>";
+                    echo "<a href='javascript:self.history.back()'><button class='btn btn-primary'>Go Back</button>";
+                }else{
+                    $result = mysqli_query($conn,"SELECT * FROM utilizador WHERE email='$email'") or die("Select Error");
+                    $row = mysqli_fetch_assoc($result);
+                    // echo $row['primeiro_nome_ut'];
+                    // echo $row['palavra_passe'];
+
+                    if(is_array($row) && !empty($row) && password_verify($password, $row['palavra_passe'])){
+                        $_SESSION['valid'] = $row['email'];
+                        $_SESSION['firstname'] = $row['primeiro_nome_ut'];
+                        $_SESSION['lastname'] = $row['apelido_ut'];
+                        $_SESSION['nif'] = $row['nif'];
+                        $_SESSION['phonenumber'] = $row['telemovel'];
+                        $_SESSION['id'] = $row['id'];
+                    }else{
+                        
+                        echo "<div class='row'>
+                                    <p>Wrong Email or Password!</p>
+                                </div> <br>";
+                        echo "<a href='javascript:self.history.back()'><button class='btn btn-primary'>Go Back</button>";
+            
+                    }
+                    if(isset($_SESSION['valid'])){
+                        header("Location: userRegistradoHome.php");
+                    }
+                }
+        
+            }else{
+
+        ?>  
     <!----------------------- Login Container -------------------------->
 
        <div class="row border rounded-5 p-3 bg-white shadow box-area">
@@ -39,19 +86,19 @@
            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Junte-se a outros cidadãos para o fim de tentar fazer Lisboa um melhor lugar.</small>
        </div> 
 
-    <!-------------------- ------ Right Box ---------------------------->
+    <!-------------------------- Right Box ---------------------------->
         
-       <div class="col-md-6 right-box">
+       <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" class="col-md-6 right-box">
           <div class="row align-items-center">
                 <div class="header-text mb-4">
                      <h2>Bem-vindo</h2>
                      <p>Estamos felizes por estar de volta.</p>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                    <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
                 </div>
                 <div class="input-group mb-1">
-                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    <input type="password" name="palavra_passe" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
                 </div>
                 <div class="input-group mb-5 d-flex justify-content-between">
                     <div class="form-check">
@@ -63,7 +110,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                    <button type="submit" name="submit" value="Login" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                 </div>
                 <div class="input-group mb-3">
                     <a href="userHome.php" class="btn btn-lg btn-light w-100 fs-6" id="registro">Entrar sem Login</a>
@@ -72,10 +119,11 @@
                     <small>Ainda não tem conta? <a href="register.php">Sign Up</a></small>
                 </div>
           </div>
-       </div> 
+        </form> 
 
       </div>
     </div>
+    <?php } ?>
 
     <script src="js/bootstrap.bundle.js"></script>
 </body>

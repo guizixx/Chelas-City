@@ -9,6 +9,7 @@
                             <div class='col border' id='headerSearch'>Localização</div>
                             <div class='col border' id='headerSearch'>Id do utilizador</div>
                             <div class='col border' id='headerSearch'>Data de registo</div>
+                            <div class='col border' id='headerSearch'>Gerir ocorrência</div>
                        </div>";
         echo $tableHeader;
         $sqlIncial = "SELECT * FROM ocorrencia";

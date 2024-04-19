@@ -26,8 +26,11 @@
                 <li class="nav-item me-3">
                     <a href="#" class="nav-link" id="linksCabecalho">Ajuda ao Cliente</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item me-3">
                     <a href="sobreUserRegistrado.php" class="nav-link" id="linksCabecalho">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a href="createOcorrencias.php" class="nav-link" id="linksCabecalho">Registar ocorrências</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

@@ -84,8 +84,9 @@
                     <li><input class="dropdown-item" type="submit" name="filTodas" value="Todas"></li>
                     <li><input class="dropdown-item" type="submit" name="filLocalização" value="Localização"></li>
                     <li><input class="dropdown-item" type="submit" name="filCategoria" value="Categoria"></li>
+                    <li><input class="dropdown-item" type="submit" name="filEstado" value="Estado"></li>
                 </ul>
-                <input type="text" name="searchInput" placeholder="Pesquisa ocorrências por localização/categoria" class="form-control" id="pesquisaPorOcorrencias" aria-label="Text input with dropdown button">
+                <input type="text" name="searchInput" placeholder="Pesquisa ocorrências por localização/categoria/estado" class="form-control" id="pesquisaPorOcorrencias" aria-label="Text input with dropdown button">
                 <button type="submit" class="btn btn-outline-secondary" name="searchBtn" id="button-addon2"><i class='bx bx-search'></i></button>
             </div>
         </div>
@@ -101,8 +102,12 @@
                     include "todasOcorrencias.php"; 
                 }                           
                 else {
+                    # ESTADO
+                    if (isset($_POST["filEstado"])){
+                        include "verEstado.php";        
+                    }
                     # CATEGORIAS
-                    if (isset($_POST["filCategoria"])){
+                    elseif (isset($_POST["filCategoria"])){
                         include "verCategorias.php";        
                     }
                     # LOCALIZAÇÃO
@@ -111,7 +116,7 @@
                     }                        
                     elseif (isset($_POST["filTodas"])){
                         include "todasOcorrencias.php";      
-                    }                        
+                    }                      
                 }
             ?>
 
@@ -153,6 +158,23 @@
                             </div>
                           </div>";
                             echo $phpToHtml2;
+                        }elseif ($rowInput['estado'] == $input) {
+                            $phpToHtml2 = "<div class='col-3'>
+                            <div class='card h-100'>
+                                <div class='card-img-top' id='zoom'><a href='#'><img src='images/{$rowInput['foto_ocorrencia']}' style='height: 300px;'></a></div>
+                                <div class='card-body d-flex flex-column'>
+                                    <div class='d-flex justify-content-between mb-3'>
+                                        <div class='cat'><span class='badge text-bg-secondary text-wrap p-1' style='width=6rem;'>{$rowInput['categoria']}</span></div><div class='small fw-medium text-wrap' style='width=3rem;'>{$rowInput['localizacao']}</div>
+                                    </div>
+                                    <h3><a href='#' class='fs-4 text-decoration-none'>{$rowInput['descricao']}</a></h3>
+                                    <div class='estado-info' style='display: flex; flex-direction: column; justify-content: flex-end; height: 100%;'>
+                                        <p style='text-align: right; margin-top: 5px;'>Estado: {$rowInput['estado']}</p>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>";
+                            echo $phpToHtml2;
+                            
                         }
                     }
                 }

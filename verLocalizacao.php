@@ -4,6 +4,7 @@
 
     if(mysqli_num_rows($resultadoLocalizacao) > 0){
         while($rowLocalizacao = mysqli_fetch_assoc($resultadoLocalizacao)){
+            if ($rowLocalizacao['estado'] !== 'resolvido') {
             $phpToHtml = "<div class='col-3'>
             <div class='card h-100'>
                 <div class='card-img-top' id='zoom'><a href='#'><img src='images/{$rowLocalizacao['foto_ocorrencia']}' style='height: 300px;'></a></div>
@@ -19,6 +20,7 @@
             </div>
           </div>";
             echo $phpToHtml;
+            }
         }
    
     }

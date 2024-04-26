@@ -4,6 +4,7 @@
 
     if(mysqli_num_rows($resultadoCategoria) > 0){
         while($rowCategoria = mysqli_fetch_assoc($resultadoCategoria)){
+            if ($rowCategoria['estado'] !== 'resolvido') {
             $phpToHtml = "<div class='col-3'>
             <div class='card h-100'>
                 <div class='card-img-top' id='zoom'><a href='#'><img src='images/{$rowCategoria['foto_ocorrencia']}' style='height: 300px;'></a></div>
@@ -19,6 +20,7 @@
             </div>
           </div>";
             echo $phpToHtml;
+            }
         }
    
     }

@@ -60,7 +60,6 @@ include("database.php");
                     <li><input class="dropdown-item" type="submit" name="filLocalização" value="Localização"></li>
                     <li><input class="dropdown-item" type="submit" name="filCategoria" value="Categoria"></li>
                     <li><input class="dropdown-item" type="submit" name="filEstado" value="Estado"></li>
-                    <li><input class="dropdown-item" type="submit" name="filResolvidos" value="Resolvidos"></li>
                 </ul>
                 <input type="text" name="searchInput" placeholder="Pesquisa ocorrências por localização/categoria/estado" class="form-control" id="pesquisaPorOcorrencias" aria-label="Text input with dropdown button">
                 <button type="submit" class="btn btn-outline-secondary" name="searchBtn" id="button-addon2"><i class='bx bx-search'></i></button>
@@ -92,9 +91,6 @@ include("database.php");
                     }                        
                     elseif (isset($_POST["filTodas"])){
                         include "todasOcorrencias.php";      
-                    }
-                    elseif (isset($_POST["filResolvidos"])){
-                        include "verResolvidos.php";      
                     }
                                        
                 }

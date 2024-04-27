@@ -78,7 +78,7 @@
                     $result = mysqli_query($conn, "SELECT * FROM utilizador WHERE email='$email'") or die("Select Error");
                     $row = mysqli_fetch_assoc($result);
 
-                    // header("Location: loginPage.php");
+                    header("Location: loginPage.php");
                 }
             }
 

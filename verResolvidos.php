@@ -18,6 +18,7 @@
                     <h3><a href='#' class='fs-4 text-decoration-none'>{$rowEstado['descricao']}</a></h3>
                     <div class='d-flex justify-content-between mb-3'>
                         <div class='cat'><span class='small fw-medium text-wrap ms-auto' style='width=3rem;'>Estado: {$rowEstado['estado']}</span></div>
+                        <a href='feedbackPage.php' type='button' class='btn btn-primary p-1' style='height:30px; width:75px;'>Avaliar</a>
                     </div>
                 </div>
             </div>

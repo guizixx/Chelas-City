@@ -45,9 +45,9 @@ include("database.php");
     <form style="text-align:center; border:solid 1px; margin:100px; border-radius:10px; background-color:white; padding:20px; max-width:1500px; width:100%; height:500px;">
         <div class="mb-3">
             <label for="avaliacao" class="form-label">Rating Rate</label><br>
-            <span class="fa fa-star checked" onclick="changeRating(1)"></span>
-            <span class="fa fa-star checked" onclick="changeRating(2)"></span>
-            <span class="fa fa-star checked" onclick="changeRating(3)"></span>
+            <span class="fa fa-star" onclick="changeRating(1)"></span>
+            <span class="fa fa-star" onclick="changeRating(2)"></span>
+            <span class="fa fa-star" onclick="changeRating(3)"></span>
             <span class="fa fa-star" onclick="changeRating(4)"></span>
             <span class="fa fa-star" onclick="changeRating(5)"></span>
             <input type="hidden" id="avaliacao" name="avaliacao" value="3"> <!-- Este campo hidden armazenará a avaliação selecionada -->
